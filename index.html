@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Simple Stop Watch Application</title>
-        <link rel="stylesheet" href="./css/stylesheet.css" >
-        <noscript>Please turn on your JavaScript...</noscript>
-    </head>
-    <body>
-        <header>
-            <h1>Stop Watch</h1>
-            <h3>A simple JavaScript stop watch app</h3>
-        </header>
-        <nav>
-            <ul>
-                <li class="active">Main Page</li>
-                <li class="">Settings</li>
-            </ul>
-        </nav>
-        <section id="main">
-            <div id="passedTime" class="mainTimer">0:00.00</div>
-            <button id="start button" onclick="startTimer()"><span>Start</span></button>
-            <button id="stop button" onclick="stopTimer()" style="display:none;"><span>Stop</span></button>
-            <button id="resume button" onclick="resumeTimer()" style="display:none;"><span>Resume</span></button>
-            <button id="reset button" onclick="resetTimer()" style="display:none;"><span>Reset</span></button>
-            <table></table>
-        </section>
-        <section id="laps">
-            <ul>
-                <li>a</li>
-            </ul>
-        </section>
-        <footer>
-            <span>under<a href="https://opensource.org/licenses/MIT"> MIT license</a></span>
-        </footer>
-    </body>
-    <script src="./js/main.js"></script>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Stop Watch Application</title>
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <noscript>Please turn on your JavaScript...</noscript>
+</head>
+
+<body>
+    <header>
+        <h1>Stop Watch</h1>
+        <h3>A simple JavaScript stop watch app</h3>
+    </header>
+    <nav>
+        <ul>
+            <li class="active">Main Page</li>
+            <li class="">Settings</li>
+        </ul>
+    </nav>
+    <section>
+        <div id="passedTime" class="mainTimer">0:00.00</div>
+        <button id="start button" onclick="startTimer()"><span>Start</span></button>
+        <button id="stop button" onclick="stopTimer()" style="display:none;"><span>Stop</span></button>
+        <button id="resume button" onclick="resumeTimer()" style="display:none;"><span>Resume</span></button>
+        <button id="reset button" onclick="resetTimer()" style="display:none;"><span>Reset</span></button>
+        <button id="lap button" onclick="addLap()" style="display:none;"><span>Lap</span></button>
+        <table></table>
+    </section>
+    <section>
+        <div class="sectionTitle">Laps:</div>
+        <ul id="laps">
+        </ul>
+    </section>
+    <footer>
+        <span>under<a href="https://opensource.org/licenses/MIT"> MIT license</a></span>
+    </footer>
+</body>
+<script src="./js/main.js"></script>
+
 </html>

@@ -2,10 +2,17 @@
 
 var timer;
 var passedMilliSeconds = 0;
+var startButton = document.getElementById("start button"),
+    stopButton = document.getElementById("stop button"),
+    resumeButton = document.getElementById("resume button"),
+    ressetButton = document.getElementById("reset button"),
+    lapButton = document.getElementById("lap button"),
+    laps = document.getElementById("laps");
 
-function startTimer(time) {
-  document.getElementById("start button").style.display = "none";
-  document.getElementById("stop button").style.display = "inline-block";
+function startTimer() {
+  startButton.style.display = "none";
+  lapButton.style.display = "inline-block";
+  stopButton.style.display = "inline-block";
   var startTimeOnClcik = Number(new Date());
   timer = setInterval(function() {
     passedTime(startTimeOnClcik);
@@ -13,28 +20,40 @@ function startTimer(time) {
 }
 
 function resumeTimer() {
-  document.getElementById("resume button").style.display = "none";
-  document.getElementById("stop button").style.display = "inline-block";
+  resumeButton.style.display = "none";
+  ressetButton.style.display = "none";
+  stopButton.style.display = "inline-block";
+  lapButton.style.display = "inline-block";
   var currentTime = Number(new Date());
-  var a = currentTime - passedMilliSeconds;
+  var stoppedTime = currentTime - passedMilliSeconds;
   timer = setInterval(function() {
-    passedTime(a);
+    passedTime(stoppedTime);
   }, 10);
 }
 
 function stopTimer() {
   clearInterval(timer);
-  document.getElementById("reset button").style.display = "inline-block";
-  document.getElementById("resume button").style.display = "inline-block";
-  document.getElementById("stop button").style.display = "none";
+  ressetButton.style.display = "inline-block";
+  resumeButton.style.display = "inline-block";
+  stopButton.style.display = "none";
+  lapButton.style.display = "none";
 }
 
 function resetTimer() {
-  document.getElementById("start button").style.display = "inline-block";
-  document.getElementById("resume button").style.display = "none";
-  document.getElementById("reset button").style.display = "none";
+  startButton.style.display = "inline-block";
+  resumeButton.style.display = "none";
+  ressetButton.style.display = "none";
+  lapButton.style.display = "none";
   document.getElementById("passedTime").innerHTML = "0:00.00";
+  laps.innerHTML = "";
   passedMilliSeconds = 0;
+}
+
+function addLap() {
+  var newLapValue = document.getElementById("passedTime").textContent;
+  var newLapItem = document.createElement("li");
+  laps.appendChild(newLapItem);
+  laps.lastElementChild.innerHTML = newLapValue;
 }
 
 function passedTime(originTime) {
